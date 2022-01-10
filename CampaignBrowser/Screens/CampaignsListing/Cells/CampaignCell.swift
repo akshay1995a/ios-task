@@ -7,22 +7,6 @@ import RxSwift
  */
 class CampaignCell: UICollectionViewCell {
 
-    /** Used to arrange of self sizing. */
-    @IBOutlet private var imageViewWitdhCnst: NSLayoutConstraint! {
-        didSet {
-            imageViewWitdhCnst.isActive = false
-        }
-    }
-    
-    /** Used to arrange of self sizing. */
-    var maxWidth: CGFloat? = nil {
-        didSet {
-            guard let maxWidth = maxWidth else { return }
-            imageViewWitdhCnst.isActive = true
-            imageViewWitdhCnst.constant = maxWidth
-        }
-    }
-    
     private let disposeBag = DisposeBag()
 
     /** Used to display the campaign's title. */
@@ -65,13 +49,5 @@ class CampaignCell: UICollectionViewCell {
         assert(nameLabel != nil)
         assert(descriptionLabel != nil)
         assert(imageView != nil)
-        
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
     }
 }
