@@ -12,12 +12,13 @@ class CampaignListingView: UICollectionView {
      */
     @IBOutlet var strongDataSource: UICollectionViewDataSource!
     
+    
     @IBOutlet private weak var flowLayout: UICollectionViewFlowLayout! {
         didSet {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
     }
-
+    
     /**
      Displays the given campaign list.
      */
@@ -85,6 +86,7 @@ class ListingDataSource: NSObject, UICollectionViewDataSource, UICollectionViewD
         }
         return cell
     }
+
 
 }
 

@@ -6,7 +6,7 @@ import RxSwift
  The cell which displays a campaign.
  */
 class CampaignCell: UICollectionViewCell {
-
+    
     private let disposeBag = DisposeBag()
 
     /** Used to display the campaign's title. */
@@ -18,9 +18,9 @@ class CampaignCell: UICollectionViewCell {
     /** The image view which is used to display the campaign's mood image. */
     @IBOutlet private(set) weak var imageView: UIImageView!
 
-    @IBOutlet private var imageViewWidhtConstant: NSLayoutConstraint! {
+    @IBOutlet private var imageViewWidthConstant: NSLayoutConstraint! {
         didSet {
-            imageViewWidhtConstant.isActive = false
+            imageViewWidthConstant.isActive = false
         }
     }
     
@@ -28,8 +28,8 @@ class CampaignCell: UICollectionViewCell {
     var maxWidth: CGFloat? = nil {
         didSet {
             guard let maxWidth = maxWidth else { return }
-            imageViewWidhtConstant.isActive = true
-            imageViewWidhtConstant.constant = maxWidth
+            imageViewWidthConstant.isActive = true
+            imageViewWidthConstant.constant = maxWidth
         }
     }
     
@@ -64,7 +64,8 @@ class CampaignCell: UICollectionViewCell {
         assert(nameLabel != nil)
         assert(descriptionLabel != nil)
         assert(imageView != nil)
-        assert(imageViewWidhtConstant != nil)
+        assert(imageViewWidthConstant != nil)
+
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
