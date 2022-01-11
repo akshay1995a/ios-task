@@ -18,6 +18,21 @@ class CampaignCell: UICollectionViewCell {
     /** The image view which is used to display the campaign's mood image. */
     @IBOutlet private(set) weak var imageView: UIImageView!
 
+    @IBOutlet private var imageViewWidhtConstant: NSLayoutConstraint! {
+        didSet {
+            imageViewWidhtConstant.isActive = false
+        }
+    }
+    
+    /** Used to arrange of self sizing. */
+    var maxWidth: CGFloat? = nil {
+        didSet {
+            guard let maxWidth = maxWidth else { return }
+            imageViewWidhtConstant.isActive = true
+            imageViewWidhtConstant.constant = maxWidth
+        }
+    }
+    
     /** The mood image which is displayed as the background. */
     var moodImage: Observable<UIImage>? {
         didSet {
@@ -49,5 +64,14 @@ class CampaignCell: UICollectionViewCell {
         assert(nameLabel != nil)
         assert(descriptionLabel != nil)
         assert(imageView != nil)
+        assert(imageViewWidhtConstant != nil)
+
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
     }
 }
